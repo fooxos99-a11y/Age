@@ -33,6 +33,35 @@ export default function PlayersPage() {
     11936490, 17691205, 7101802, 11722889, 14942784, 12612429, 21930925, 2726798, 7951909, 18646935, 22321156, 15623207, 22392824, 18537498, 10380410, 23365421, 10298048, 17519084, 22678310, 4187391, 18427504, 7286535, 20985555, 18756172, 18648333, 16142126, 23478463, 14139190, 21400369, 22520672, 6601674, 2904007, 9333742, 6992032, 22581524, 4885161, 12546758
   ];
   const [players, setPlayers] = useState<any[]>([]);
+  // دالة توحيد اسم اللاعب (بدون تشكيل ومسافات وحروف صغيرة)
+  function normalizeNameKey(name: string) {
+    return name.replace(/[\u064B-\u0652]/g, '').replace(/\s+/g, '').toLowerCase();
+  }
+  const deniedNorm = normalizeNameKey("Denied");
+  const deniedNorm2 = normalizeNameKey("DenieD");
+  const overrideCountry: Record<string, string> = {
+    DenieD: "tn", // تونس (exact match)
+    denied: "tn", // تونس
+    [deniedNorm]: "tn", // تونس (normalized)
+    [deniedNorm2]: "tn", // تونس (normalized for DenieD)
+    // أضف لاعبين آخرين هنا إذا احتجت
+  };
+
+  // اجبر علم تونس إذا كان اسم اللاعب DenieD بالضبط
+  function getPlayerCountry(player: any) {
+    if (player.username === "DenieD") return "tn";
+    if (player.username === "allowed") return "tn";
+    if (player.username === "Gam3rLama") return "tn";
+    if (player.username === "النقيب / SPARTAN") return "ly";
+    // ...existing code...
+    // منطقك الحالي:
+    // دالة توحيد اسم اللاعب (بدون تشكيل ومسافات وحروف صغيرة)
+    function normalizeNameKey(name: string) {
+      return name.replace(/[\u064B-\u0652]/g, '').replace(/\s+/g, '').toLowerCase();
+    }
+    const normName = normalizeNameKey(player.username);
+    return overrideCountry[player.username] || overrideCountry[normName] || player.country;
+  }
     // خريطة الكلان للاعبين حسب الاسم
     const clanImages: Record<string, string> = {
       loklok: "/1.png",
@@ -234,10 +263,10 @@ export default function PlayersPage() {
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-foreground font-semibold">#{start + index + 1}</span>
-                        {player.country && (
+                        {getPlayerCountry(player) && (
                           <img
-                            src={`https://flagcdn.com/24x18/${player.country.toLowerCase()}.png`}
-                            alt={player.country}
+                            src={`https://flagcdn.com/24x18/${getPlayerCountry(player).toLowerCase()}.png`}
+                            alt={getPlayerCountry(player)}
                             className="inline-block rounded-sm border border-border"
                             style={{ width: 24, height: 18, objectFit: 'cover' }}
                           />
