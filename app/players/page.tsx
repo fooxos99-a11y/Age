@@ -33,6 +33,11 @@ export default function PlayersPage() {
     11936490, 17691205, 7101802, 11722889, 14942784, 12612429, 21930925, 2726798, 7951909, 18646935, 22321156, 15623207, 22392824, 18537498, 10380410, 23365421, 10298048, 17519084, 22678310, 4187391, 18427504, 7286535, 20985555, 18756172, 18648333, 16142126, 23478463, 14139190, 21400369, 22520672, 6601674, 2904007, 9333742, 6992032, 22581524, 4885161, 12546758
   ];
   const [players, setPlayers] = useState<any[]>([]);
+    // خريطة الكلان للاعبين حسب الاسم
+    const clanImages: Record<string, string> = {
+      loklok: "/1.png",
+      // أضف لاعبين آخرين هنا
+    };
   const [loading, setLoading] = useState(true);
 
   // خريطة الرانكات إلى الصور (ضع الصور في public/ranks/ بنفس الاسم)
@@ -154,11 +159,12 @@ export default function PlayersPage() {
         {/* Leaderboard Table */}
         <div className="bg-card rounded-xl overflow-hidden border border-border">
           {/* Table Header */}
-          <div className="grid grid-cols-4 gap-4 px-6 py-4 bg-card border-b border-border text-muted-foreground text-sm font-semibold">
+          <div className="grid grid-cols-5 gap-4 px-6 py-4 bg-card border-b border-border text-muted-foreground text-sm font-semibold">
             <div>{isArabic ? "#الترتيب / اللاعب" : "Rank / Player"}</div>
             <div className="text-center">{isArabic ? "التصنيف" : "Rating"}</div>
             <div className="text-center">{isArabic ? "نسبة الفوز" : "Win Rate"}</div>
             <div className="text-center">{isArabic ? "عدد الألعاب" : "Games"}</div>
+            <div className="text-center">{isArabic ? "الكلان" : "Clan"}</div>
           </div>
           {/* Empty State */}
           {players.length === 0 ? (
@@ -224,7 +230,7 @@ export default function PlayersPage() {
                   return (
                     <div
                       key={player.username + activeTab}
-                      className="grid grid-cols-4 gap-4 px-6 py-5 items-center border-b border-border last:border-b-0 hover:bg-accent/20 transition-colors"
+                      className="grid grid-cols-5 gap-4 px-6 py-5 items-center border-b border-border last:border-b-0 hover:bg-accent/20 transition-colors"
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-foreground font-semibold">#{start + index + 1}</span>
@@ -258,6 +264,18 @@ export default function PlayersPage() {
                       </div>
                       <div className="text-center text-muted-foreground">{data.winRate !== '' ? data.winRate : '-'}</div>
                       <div className="text-center text-muted-foreground">{data.games !== '' ? data.games : '-'}</div>
+                      <div className="text-center text-muted-foreground">
+                        {/* خانة الكلان */}
+                        {clanImages[player.username] ? (
+                          <img
+                            src={clanImages[player.username]}
+                            alt="clan"
+                            style={{ width: 32, height: 32, objectFit: 'contain', display: 'inline-block', borderRadius: 8 }}
+                          />
+                        ) : (
+                          "-"
+                        )}
+                      </div>
                     </div>
                   );
                 });
