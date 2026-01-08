@@ -43,9 +43,18 @@ export default function SupportersPage() {
             WebkitTextFillColor: 'transparent',
             color: '#f9b83f'
           }}>
-            <div>* جميع المبالغ تعود الى البطولات</div>
-            <div>* يمكنك الدعم عبر...</div>
-            <div>* الداعمين سيكون لهم رتب خاصة في مجتمع الديسكورد</div>
+            <div>جميع المبالغ تعود الى البطولات</div>
+            <div>
+              <a
+                href="https://www.paypal.me/aoe4arab"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'underline', cursor: 'pointer', color: 'inherit' }}
+              >
+                يمكنك الدعم عبر الضغط هنا
+              </a>
+            </div>
+            <div>الداعمين سيكون لهم رتب خاصة في مجتمع الديسكورد</div>
           </div>
         </div>
       </div>
