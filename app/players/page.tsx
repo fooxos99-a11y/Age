@@ -27,10 +27,10 @@ export default function PlayersPage() {
 
   const isArabic = language === "ar"
 
-  // ضع هنا معرفات اللاعبين الذين تريدهم من aoe4world
+  // ضع هنا معرفات اللاعبين الذين تريدهم من aoe4world (بدون تكرار)
   const playerIds = [
     13803227, 18269677, 16919033, 18127021, 14536691, 22697227, 720732, 18949649, 7202544, 22744507, 11831473, 17916129, 16735807, 22583412, 13610117, 24463802, 10838919, 23074017, 3104402, 15356403, 7751466, 8338970, 3830179,
-    11936490, 17691205, 7101802, 11722889, 14942784, 14942784, 12612429, 21930925, 2726798, 7951909, 18646935, 22321156, 15623207, 22392824, 18537498, 10380410, 23365421, 10298048, 17519084, 22678310, 4187391, 4187391, 18427504, 7286535, 20985555, 18756172, 18648333, 16142126, 23478463, 14139190, 21400369, 22520672, 6601674, 2904007, 9333742, 6992032, 22581524, 4885161, 12546758
+    11936490, 17691205, 7101802, 11722889, 14942784, 12612429, 21930925, 2726798, 7951909, 18646935, 22321156, 15623207, 22392824, 18537498, 10380410, 23365421, 10298048, 17519084, 22678310, 4187391, 18427504, 7286535, 20985555, 18756172, 18648333, 16142126, 23478463, 14139190, 21400369, 22520672, 6601674, 2904007, 9333742, 6992032, 22581524, 4885161, 12546758
   ];
   const [players, setPlayers] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -179,7 +179,15 @@ export default function PlayersPage() {
               {/* تقسيم اللاعبين حسب الصفحة */}
               {(() => {
                 const pageSize = 10;
-                const sortedPlayers = players
+                // إزالة التكرار بناءً على اسم المستخدم (username)
+                const uniquePlayersMap = new Map();
+                players.forEach((player) => {
+                  if (!uniquePlayersMap.has(player.username)) {
+                    uniquePlayersMap.set(player.username, player);
+                  }
+                });
+                const uniquePlayers = Array.from(uniquePlayersMap.values());
+                const sortedPlayers = uniquePlayers
                   .map((player) => ({
                     ...player,
                     _points: Number((activeTab === "individual" ? player.solo.points : player.team.points) || 0),
