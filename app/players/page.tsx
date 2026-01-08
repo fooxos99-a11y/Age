@@ -53,6 +53,7 @@ export default function PlayersPage() {
     if (player.username === "allowed") return "tn";
     if (player.username === "Gam3rLama") return "tn";
     if (player.username === "النقيب / SPARTAN") return "ly";
+    if (player.username === "Ru$h") return "iq";
     // ...existing code...
     // منطقك الحالي:
     // دالة توحيد اسم اللاعب (بدون تشكيل ومسافات وحروف صغيرة)
