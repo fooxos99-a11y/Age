@@ -7,7 +7,7 @@ import { useState } from "react";
 export default function SupportersPage() {
   // بيانات الداعمين (تعديلها يدوياً)
   const [supporters] = useState([
-    { name: "خالد", amount: "$10" },
+    { name: "خالد", amount: "$1" },
     // مثال: { name: "اسم الداعم", amount: 100 }
   ]);
 
