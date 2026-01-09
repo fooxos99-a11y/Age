@@ -14,6 +14,7 @@ export function Header() {
     { name: "الفيديوهات", href: "/videos" },
     { name: "ديسكورد", href: "/discord" },
     { name: "الداعمين", href: "/supporters" },
+    { name: "الكلانات", href: "/clans" },
   ]
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
