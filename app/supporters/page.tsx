@@ -46,7 +46,7 @@ export default function SupportersPage() {
             <div>جميع المبالغ تعود الى البطولات</div>
             <div>
               <a
-                href="https://www.paypal.me/aoe4arab"
+                href="https://gofund.me/8ae56ba9b"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ textDecoration: 'underline', cursor: 'pointer', color: 'inherit' }}
