@@ -76,6 +76,8 @@ export default function PlayersPage() {
       DenieD: "/1.png",
       "Ru$h": "/2.png",
       loklok: "/4.png",
+      "النقيب / SPARTAN": "/8.png",
+      "SNEAKY": "/3.png",
       // أضف لاعبين آخرين هنا
     };
   const [loading, setLoading] = useState(true);
