@@ -13,7 +13,14 @@ export default function PlayersPage() {
     const params = new URLSearchParams(window.location.search);
     return Number(params.get('page')) || 1;
   }
-  const [currentPage, setCurrentPage] = useState(getPageFromUrl());
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // تحديث currentPage بعد أول تحميل في المتصفح فقط
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setCurrentPage(getPageFromUrl());
+    }
+  }, []);
   const [activeTab, setActiveTab] = useState<"individual" | "team">("individual")
   // عند تغيير الصفحة، حدث الرابط
   function handlePageChange(page: number) {
