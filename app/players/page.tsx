@@ -144,13 +144,27 @@ export default function PlayersPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
-        <div className="flex flex-col items-center gap-4">
-          <svg className="animate-spin h-12 w-12 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+        <span className="relative flex h-14 w-14">
+          <span className="absolute inline-flex h-full w-full rounded-full bg-gradient-to-tr from-[#FFD700] via-[#FFB300] to-[#FFEA70] opacity-60 animate-pulse"></span>
+          <svg className="relative animate-spin h-14 w-14" viewBox="0 0 50 50">
+            <circle
+              className="opacity-30"
+              cx="25"
+              cy="25"
+              r="20"
+              stroke="#FFD700"
+              strokeWidth="6"
+              fill="none"
+            />
+            <path
+              fill="#FFD700]"
+              d="M25 5
+                a 20 20 0 0 1 0 40
+                a 20 20 0 0 1 0 -40"
+              opacity="0.8"
+            />
           </svg>
-          <span className="text-lg font-semibold">{isArabic ? "جاري تحميل اللاعبين..." : "Loading players..."}</span>
-        </div>
+        </span>
       </div>
     );
   }
