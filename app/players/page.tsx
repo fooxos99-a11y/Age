@@ -54,6 +54,7 @@ export default function PlayersPage() {
     if (player.username === "Gam3rLama") return "tn";
     if (player.username === "النقيب / SPARTAN") return "ly";
     if (player.username === "Ru$h") return "iq";
+    if (player.username === "Revain") return "sa";
     // ...existing code...
     // منطقك الحالي:
     // دالة توحيد اسم اللاعب (بدون تشكيل ومسافات وحروف صغيرة)
@@ -65,7 +66,9 @@ export default function PlayersPage() {
   }
     // خريطة الكلان للاعبين حسب الاسم
     const clanImages: Record<string, string> = {
-      loklok: "/1.png",
+      DenieD: "/1.png",
+      "Ru$h": "/2.png",
+      loklok: "/4.png",
       // أضف لاعبين آخرين هنا
     };
   const [loading, setLoading] = useState(true);
@@ -144,41 +147,24 @@ export default function PlayersPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
-        <span className="relative flex h-14 w-14">
-          <span className="absolute inline-flex h-full w-full rounded-full bg-gradient-to-tr from-[#FFD700] via-[#FFB300] to-[#FFEA70] opacity-60 animate-pulse"></span>
-          <svg className="relative animate-spin h-14 w-14" viewBox="0 0 50 50">
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="#FFD700"
-              strokeWidth="6"
-              fill="none"
-            />
-            <path
-              fill="#FFD700]"
-              d="M25 5
-                a 20 20 0 0 1 0 40
-                a 20 20 0 0 1 0 -40"
-              opacity="0.8"
-            />
-          </svg>
-        </span>
+        <svg className="animate-spin h-12 w-12 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+        </svg>
       </div>
     );
   }
   return (
     <div className="min-h-screen text-foreground relative overflow-hidden" style={{ backgroundImage: "url('/textures/bg-texture.png')", backgroundSize: 'cover', backgroundRepeat: 'repeat' }}>
-      <div className="relative z-10 max-w-6xl mx-auto py-8 px-6">
+      <div className="relative z-10 max-w-6xl mx-auto py-6 px-2 sm:py-8 sm:px-6">
         <Header />
         {/* Header with Trophy Icon */}
-        <div className="flex flex-col items-center" style={{ marginTop: 72, marginBottom: 72 }}>
-          <Trophy className="w-16 h-16 mb-4" strokeWidth={1.5} color="#f9b83f" />
-          <h1 className="text-4xl font-bold text-foreground">{isArabic ? "أفضل اللاعبين" : "Best Players"}</h1>
+        <div className="flex flex-col items-center mt-8 mb-8 sm:mt-[72px] sm:mb-[72px]">
+          <Trophy className="w-12 h-12 sm:w-16 sm:h-16 mb-4" strokeWidth={1.5} color="#f9b83f" />
+          <h1 className="text-2xl sm:text-4xl font-bold text-foreground text-center">{isArabic ? "أفضل اللاعبين" : "Best Players"}</h1>
         </div>
         {/* Tabs */}
-        <div className="flex justify-center gap-4 mb-8">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
           <button
             onClick={() => setActiveTab("individual")}
             className={`px-8 py-3 rounded-lg font-semibold transition-all ${
@@ -201,9 +187,9 @@ export default function PlayersPage() {
           </button>
         </div>
         {/* Leaderboard Table */}
-        <div className="bg-card rounded-xl overflow-hidden border border-border">
+        <div className="bg-card rounded-xl overflow-hidden border border-border w-full max-w-xs sm:max-w-3xl mx-auto">
           {/* Table Header */}
-          <div className="grid grid-cols-5 gap-4 px-6 py-4 bg-card border-b border-border text-muted-foreground text-sm font-semibold">
+          <div className="grid grid-cols-5 gap-2 sm:gap-4 px-2 sm:px-6 py-2 sm:py-4 bg-card border-b border-border text-muted-foreground text-xs sm:text-sm font-semibold">
             <div>{isArabic ? "#الترتيب / اللاعب" : "Rank / Player"}</div>
             <div className="text-center">{isArabic ? "التصنيف" : "Rating"}</div>
             <div className="text-center">{isArabic ? "نسبة الفوز" : "Win Rate"}</div>
@@ -310,7 +296,9 @@ export default function PlayersPage() {
                       <div className="text-center text-muted-foreground">{data.games !== '' ? data.games : '-'}</div>
                       <div className="text-center text-muted-foreground">
                         {/* خانة الكلان */}
-                        {clanImages[player.username] ? (
+                        {player.username === "Mythic" ? (
+                          <span className="inline-block text-xs text-muted-foreground mx-2">Mythic</span>
+                        ) : clanImages[player.username] ? (
                           <img
                             src={clanImages[player.username]}
                             alt="clan"
