@@ -86,6 +86,9 @@ export default function ClansPage() {
                   {clan === 'Meta' && (
                     <span className="flex items-center gap-2"><img src="/3.png" alt="Meta" className="w-6 h-6 rounded-full" />Meta</span>
                   )}
+                  {clan === 'Sneaky' && (
+                    <span className="flex items-center gap-2"><img src="/3.png" alt="Sneaky" className="w-6 h-6 rounded-full" />Sneaky</span>
+                  )}
                   {clan === 'Immortal' && (
                     <span className="flex items-center gap-2"><img src="/7.png" alt="Immortal" className="w-6 h-6 rounded-full" />Immortal</span>
                   )}
@@ -104,6 +107,7 @@ export default function ClansPage() {
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setClan('Alpha'); setShowDropdownReg(false); }}><img src="/2.png" alt="Alpha" className="w-6 h-6 rounded-full" />Alpha</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setClan('Shadow'); setShowDropdownReg(false); }}><img src="/4.png" alt="Shadow" className="w-6 h-6 rounded-full" />Shadow</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setClan('Meta'); setShowDropdownReg(false); }}><img src="/3.png" alt="Meta" className="w-6 h-6 rounded-full" />Meta</div>
+                      <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setClan('Sneaky'); setShowDropdownReg(false); }}><img src="/3.png" alt="Sneaky" className="w-6 h-6 rounded-full" />Sneaky</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setClan('Immortal'); setShowDropdownReg(false); }}><img src="/7.png" alt="Immortal" className="w-6 h-6 rounded-full" />Immortal</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setClan('Dominion'); setShowDropdownReg(false); }}><img src="/8.png" alt="Dominion" className="w-6 h-6 rounded-full" />Dominion</div>
                     </div>
@@ -173,6 +177,9 @@ export default function ClansPage() {
                   {joinClan === 'Meta' && (
                     <span className="flex items-center gap-2"><img src="/3.png" alt="Meta" className="w-6 h-6 rounded-full" />Meta</span>
                   )}
+                  {joinClan === 'Sneaky' && (
+                    <span className="flex items-center gap-2"><img src="/3.png" alt="Sneaky" className="w-6 h-6 rounded-full" />Sneaky</span>
+                  )}
                   {joinClan === 'Immortal' && (
                     <span className="flex items-center gap-2"><img src="/7.png" alt="Immortal" className="w-6 h-6 rounded-full" />Immortal</span>
                   )}
@@ -192,6 +199,7 @@ export default function ClansPage() {
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setJoinClan('Alpha'); setShowDropdown(false); }}><img src="/2.png" alt="Alpha" className="w-6 h-6 rounded-full" />Alpha</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setJoinClan('Shadow'); setShowDropdown(false); }}><img src="/4.png" alt="Shadow" className="w-6 h-6 rounded-full" />Shadow</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setJoinClan('Meta'); setShowDropdown(false); }}><img src="/3.png" alt="Meta" className="w-6 h-6 rounded-full" />Meta</div>
+                      <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setJoinClan('Sneaky'); setShowDropdown(false); }}><img src="/3.png" alt="Sneaky" className="w-6 h-6 rounded-full" />Sneaky</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setJoinClan('Immortal'); setShowDropdown(false); }}><img src="/7.png" alt="Immortal" className="w-6 h-6 rounded-full" />Immortal</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setJoinClan('Dominion'); setShowDropdown(false); }}><img src="/8.png" alt="Dominion" className="w-6 h-6 rounded-full" />Dominion</div>
                     </div>
