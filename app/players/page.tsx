@@ -197,7 +197,7 @@ export default function PlayersPage() {
           </button>
         </div>
         {/* Leaderboard Table */}
-        <div className="bg-card rounded-xl overflow-hidden border border-border w-full max-w-xs sm:max-w-3xl mx-auto">
+        <div className="bg-card rounded-xl overflow-hidden border border-border w-full max-w-2xl sm:max-w-4xl mx-auto">
           {/* Table Header */}
           <div className="grid grid-cols-5 gap-2 sm:gap-4 px-2 sm:px-6 py-2 sm:py-4 bg-card border-b border-border text-muted-foreground text-xs sm:text-sm font-semibold">
             <div>{isArabic ? "#الترتيب / اللاعب" : "Rank / Player"}</div>
@@ -283,7 +283,7 @@ export default function PlayersPage() {
                           />
                         )}
                         <span
-                          className="text-foreground font-medium break-words max-w-[120px] whitespace-normal"
+                          className="text-foreground font-medium break-words max-w-[220px] whitespace-normal"
                           style={{ wordBreak: 'break-word', lineHeight: '1.2' }}
                         >
                           {player.username}
