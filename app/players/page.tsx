@@ -59,6 +59,7 @@ export default function PlayersPage() {
     if (player.username === "DenieD") return "tn";
     if (player.username === "allowed") return "tn";
     if (player.username === "Gam3rLama") return "tn";
+    if (player.username === "sopersayan3") return "iq";
     if (player.username === "النقيب / SPARTAN") return "ly";
     if (player.username === "Ru$h") return "iq";
     if (player.username === "Revain") return "sa";
