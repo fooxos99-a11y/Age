@@ -281,7 +281,12 @@ export default function PlayersPage() {
                             style={{ width: 24, height: 18, objectFit: 'cover' }}
                           />
                         )}
-                        <span className="text-foreground font-medium">{player.username}</span>
+                        <span
+                          className="text-foreground font-medium break-words max-w-[120px] whitespace-normal"
+                          style={{ wordBreak: 'break-word', lineHeight: '1.2' }}
+                        >
+                          {player.username}
+                        </span>
                       </div>
                       <div className="flex flex-col items-center justify-center h-full min-h-[40px]">
                         <span className="flex items-center gap-2 justify-center">
