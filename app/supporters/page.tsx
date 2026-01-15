@@ -2,10 +2,19 @@
 import { PageBackground } from "@/components/page-background"
 import { Header } from "@/components/header"
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Script from "next/script";
 
 export default function SupportersPage() {
+    const paypalRef = useRef(null);
+
+    useEffect(() => {
+      if (typeof window !== "undefined" && window.paypal && paypalRef.current) {
+        window.paypal.HostedButtons({
+          hostedButtonId: "53CP6A8AJR9XY"
+        }).render(paypalRef.current);
+      }
+    }, [typeof window !== "undefined" && window.paypal]);
   // بيانات الداعمين (تعديلها يدوياً)
   const [supporters] = useState([
     { name: "Ru$h", amount: "$100" },
@@ -40,20 +49,40 @@ export default function SupportersPage() {
         <div className="w-full flex flex-col items-center justify-center mt-24 mb-4">
           <div className="max-w-2xl w-full text-sm space-y-2 text-center mt-8">
               <div className="text-base text-foreground">جميع المبالغ تعود الى البطولات</div>
-              {/* PayPal Button Embed */}
-              <div className="my-4 flex justify-center">
-                {/* استبدل هذا الكود بكود زر بايبال الخاص بك من لوحة التحكم */}
-                <div>
-                  <form action="https://www.paypal.com/donate" method="post" target="_blank">
-                    <input type="hidden" name="hosted_button_id" value="ZJ7JQ7J7J7J7J" />
-                    <button
-                      type="submit"
-                      className="inline-block px-5 py-2 rounded bg-yellow-400 text-black font-bold shadow hover:bg-yellow-500 transition-colors my-2"
-                    >
-                      ادعم عبر PayPal
-                    </button>
-                  </form>
+              {/* PayPal Button Embed (React way) */}
+              <div className="my-4 flex flex-col items-center justify-center">
+                {/* إزالة النصوص المكررة */}
+                <div style={{ width: 340, direction: 'ltr', background: 'transparent', padding: 0, margin: '0 auto' }}>
+                  <style>{`
+                    #paypal-container-53CP6A8AJR9XY input[type='number'],
+                    #paypal-container-53CP6A8AJR9XY input[type='text'] {
+                      border: 2px solid #000 !important;
+                      color: #000 !important;
+                    }
+                    #paypal-container-53CP6A8AJR9XY span,
+                    #paypal-container-53CP6A8AJR9XY label,
+                    #paypal-container-53CP6A8AJR9XY div,
+                    #paypal-container-53CP6A8AJR9XY p {
+                      font-size: 0 !important;
+                      color: transparent !important;
+                      letter-spacing: -1em !important;
+                      line-height: 0 !important;
+                    }
+                  `}</style>
+                  <div ref={paypalRef} id="paypal-container-53CP6A8AJR9XY"></div>
                 </div>
+                <Script
+                  src="https://www.paypal.com/sdk/js?client-id=BAA58qxEgZABdcWnJ19mUOpX56zKmBh7tuQWG7ykbM06PIviWtS-Mq7Q4rPzwkcz_yEnbfXtROieBXiNqs&components=hosted-buttons&disable-funding=venmo&currency=USD"
+                  strategy="afterInteractive"
+                  crossOrigin="anonymous"
+                  onLoad={() => {
+                    if (window.paypal && paypalRef.current) {
+                      window.paypal.HostedButtons({
+                        hostedButtonId: "53CP6A8AJR9XY"
+                      }).render(paypalRef.current);
+                    }
+                  }}
+                />
               </div>
               <div className="text-base text-foreground">الداعمين سيكون لهم رتب خاصة في مجتمع الديسكورد</div>
               {/* PayPal Script لم يعد مطلوباً */}
