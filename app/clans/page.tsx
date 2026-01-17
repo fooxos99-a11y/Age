@@ -69,25 +69,19 @@ export default function ClansPage() {
                   {clan === '' && 'اختر الكلان'}
                   {clan === 'other' && 'أي كلان متاح'}
                   {clan === 'Prestige' && (
-                    <span className="flex items-center gap-2"><img src="/1.png" alt="Prestige" className="w-6 h-6 rounded-full" />Prestige</span>
+                    <span className="flex items-center gap-2"><img src="/1.png" alt="Eagle" className="w-6 h-6 rounded-full" />Eagle</span>
                   )}
                   {clan === 'Void' && (
                     <span className="flex items-center gap-2"><img src="/6.png" alt="Void" className="w-6 h-6 rounded-full" />Void</span>
                   )}
-                  {clan === 'Alpha' && (
-                    <span className="flex items-center gap-2"><img src="/2.png" alt="Alpha" className="w-6 h-6 rounded-full" />Alpha</span>
-                  )}
                   {clan === 'Shadow' && (
                     <span className="flex items-center gap-2"><img src="/4.png" alt="Shadow" className="w-6 h-6 rounded-full" />Shadow</span>
-                  )}
-                  {clan === 'Meta' && (
-                    <span className="flex items-center gap-2"><img src="/3.png" alt="Meta" className="w-6 h-6 rounded-full" />Meta</span>
                   )}
                   {clan === 'Immortal' && (
                     <span className="flex items-center gap-2"><img src="/7.png" alt="Immortal" className="w-6 h-6 rounded-full" />Immortal</span>
                   )}
                   {clan === 'Delta' && (
-                    <span className="flex items-center gap-2"><img src="/8.png" alt="Delta" className="w-6 h-6 rounded-full" />Delta</span>
+                    {/* Delta option removed */}
                   )}
                   <svg className="w-4 h-4 ml-2" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clipRule="evenodd" /></svg>
                 </button>
@@ -95,13 +89,11 @@ export default function ClansPage() {
                   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60" onClick={() => setShowDropdownReg(false)}>
                     <div className="bg-background border border-border rounded-md shadow-lg min-w-[220px] max-w-xs w-full max-h-[80vh] overflow-y-auto p-2" onClick={e => e.stopPropagation()}>
                       <div className="px-3 py-2 text-right text-muted-foreground cursor-pointer" onClick={() => { setClan(''); setShowDropdownReg(false); }}>اختر الكلان</div>
-                      <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setClan('Prestige'); setShowDropdownReg(false); }}><img src="/1.png" alt="Prestige" className="w-6 h-6 rounded-full" />Prestige</div>
+                      <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setClan('Eagle'); setShowDropdownReg(false); }}><img src="/1.png" alt="Eagle" className="w-6 h-6 rounded-full" />Eagle</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setClan('Void'); setShowDropdownReg(false); }}><img src="/6.png" alt="Void" className="w-6 h-6 rounded-full" />Void</div>
-                      <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setClan('Alpha'); setShowDropdownReg(false); }}><img src="/2.png" alt="Alpha" className="w-6 h-6 rounded-full" />Alpha</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setClan('Shadow'); setShowDropdownReg(false); }}><img src="/4.png" alt="Shadow" className="w-6 h-6 rounded-full" />Shadow</div>
-                      <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setClan('Meta'); setShowDropdownReg(false); }}><img src="/3.png" alt="Meta" className="w-6 h-6 rounded-full" />Meta</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setClan('Immortal'); setShowDropdownReg(false); }}><img src="/7.png" alt="Immortal" className="w-6 h-6 rounded-full" />Immortal</div>
-                      <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setClan('Delta'); setShowDropdownReg(false); }}><img src="/8.png" alt="Delta" className="w-6 h-6 rounded-full" />Delta</div>
+                      {/* Delta option removed */}
                     </div>
                   </div>
                 )}
@@ -125,8 +117,11 @@ export default function ClansPage() {
                 className="mt-6 bg-[#f9b83f] hover:bg-[#e6a92e] text-white border-none"
                 style={{ boxShadow: '0 2px 8px 0 #f9b83f33' }}
                 disabled={!name.trim() || !clan}
-              >
-                تسجيل
+              disabled={true}>
+                <span style={{display:'inline-flex',alignItems:'center',gap:'0.5em'}}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"><path fill="#fff" d="M17 10V8a5 5 0 0 0-10 0v2H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1h-2Zm-8-2a3 3 0 1 1 6 0v2H9V8Zm10 12H5v-9h14v9Z"/><circle cx="12" cy="16" r="1.5" fill="#fff"/></svg>
+                  تسجيل
+                </span>
               </Button>
               {success && (
                 <div className="text-green-600 font-bold mt-2">تم التسجيل</div>
@@ -152,7 +147,7 @@ export default function ClansPage() {
                   {joinClan === '' && 'اختر الكلان'}
                   {joinClan === 'other' && 'أي كلان متاح'}
                   {joinClan === 'Prestige' && (
-                    <span className="flex items-center gap-2"><img src="/1.png" alt="Prestige" className="w-6 h-6 rounded-full" />Prestige</span>
+                    <span className="flex items-center gap-2"><img src="/1.png" alt="Eagle" className="w-6 h-6 rounded-full" />Eagle</span>
                   )}
                   {joinClan === 'Void' && (
                     <span className="flex items-center gap-2"><img src="/6.png" alt="Void" className="w-6 h-6 rounded-full" />Void</span>
@@ -170,7 +165,7 @@ export default function ClansPage() {
                     <span className="flex items-center gap-2"><img src="/7.png" alt="Immortal" className="w-6 h-6 rounded-full" />Immortal</span>
                   )}
                   {joinClan === 'Delta' && (
-                    <span className="flex items-center gap-2"><img src="/8.png" alt="Delta" className="w-6 h-6 rounded-full" />Delta</span>
+                    {/* Delta option removed */}
                   )}
                   <svg className="w-4 h-4 ml-2" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clipRule="evenodd" /></svg>
                 </button>
@@ -179,13 +174,10 @@ export default function ClansPage() {
                     <div className="bg-background border border-border rounded-md shadow-lg min-w-[220px] max-w-xs w-full max-h-[80vh] overflow-y-auto p-2" onClick={e => e.stopPropagation()}>
                       <div className="px-3 py-2 text-right text-muted-foreground cursor-pointer" onClick={() => { setJoinClan(''); setShowDropdown(false); }}>اختر الكلان</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent" onClick={() => { setJoinClan('other'); setShowDropdown(false); }}>أي كلان متاح</div>
-                      <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setJoinClan('Prestige'); setShowDropdown(false); }}><img src="/1.png" alt="Prestige" className="w-6 h-6 rounded-full" />Prestige</div>
+                      <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setJoinClan('Eagle'); setShowDropdown(false); }}><img src="/1.png" alt="Eagle" className="w-6 h-6 rounded-full" />Eagle</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setJoinClan('Void'); setShowDropdown(false); }}><img src="/6.png" alt="Void" className="w-6 h-6 rounded-full" />Void</div>
-                      <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setJoinClan('Alpha'); setShowDropdown(false); }}><img src="/2.png" alt="Alpha" className="w-6 h-6 rounded-full" />Alpha</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setJoinClan('Shadow'); setShowDropdown(false); }}><img src="/4.png" alt="Shadow" className="w-6 h-6 rounded-full" />Shadow</div>
-                      <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setJoinClan('Meta'); setShowDropdown(false); }}><img src="/3.png" alt="Meta" className="w-6 h-6 rounded-full" />Meta</div>
                       <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setJoinClan('Immortal'); setShowDropdown(false); }}><img src="/7.png" alt="Immortal" className="w-6 h-6 rounded-full" />Immortal</div>
-                      <div className="px-3 py-2 text-right cursor-pointer hover:bg-accent flex items-center gap-2" onClick={() => { setJoinClan('Delta'); setShowDropdown(false); }}><img src="/8.png" alt="Delta" className="w-6 h-6 rounded-full" />Delta</div>
                     </div>
                   </div>
                 )}
