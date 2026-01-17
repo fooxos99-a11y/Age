@@ -68,7 +68,7 @@ export default function ClansPage() {
                 >
                   {clan === '' && 'اختر الكلان'}
                   {clan === 'other' && 'أي كلان متاح'}
-                  {clan === 'Prestige' && (
+                  {clan === 'Eagle' && (
                     <span className="flex items-center gap-2"><img src="/1.png" alt="Eagle" className="w-6 h-6 rounded-full" />Eagle</span>
                   )}
                   {clan === 'Void' && (
@@ -146,7 +146,7 @@ export default function ClansPage() {
                 >
                   {joinClan === '' && 'اختر الكلان'}
                   {joinClan === 'other' && 'أي كلان متاح'}
-                  {joinClan === 'Prestige' && (
+                  {joinClan === 'Eagle' && (
                     <span className="flex items-center gap-2"><img src="/1.png" alt="Eagle" className="w-6 h-6 rounded-full" />Eagle</span>
                   )}
                   {joinClan === 'Void' && (
