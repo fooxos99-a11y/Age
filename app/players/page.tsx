@@ -56,12 +56,18 @@ export default function PlayersPage() {
 
   // اجبر علم تونس إذا كان اسم اللاعب DenieD بالضبط
   function getPlayerCountry(player: any) {
+                  if (player.username === "SULTANi7848") return "iq";
+                if (player.username === "hmode94") return "iq";
+              if (player.username === "SoufianeDZ3693") return "dz";
+            if (player.username === "HAMID") return "sa";
+          if (player.username === "AboBa7rGX") return "sy";
+        if (player.username === "Damaration") return "sa";
+      if (player.username === "Ru$h") return "iq";
     if (player.username === "DenieD") return "tn";
     if (player.username === "allowed") return "tn";
     if (player.username === "Gam3rLama") return "tn";
     if (player.username === "sopersayan3") return "iq";
     if (player.username === "النقيب / SPARTAN") return "ly";
-    if (player.username === "Ru$h") return "iq";
     if (player.username === "Revain") return "sa";
     // ...existing code...
     // منطقك الحالي:
@@ -75,10 +81,8 @@ export default function PlayersPage() {
     // خريطة الكلان للاعبين حسب الاسم
     const clanImages: Record<string, string> = {
       DenieD: "/1.png",
-      "Ru$h": "/2.png",
       loklok: "/4.png",
       "النقيب / SPARTAN": "/8.png",
-      "SNEAKY": "/3.png",
       // أضف لاعبين آخرين هنا
     };
   const [loading, setLoading] = useState(true);
@@ -171,7 +175,7 @@ export default function PlayersPage() {
         {/* Header with Trophy Icon */}
         <div className="flex flex-col items-center mt-8 mb-8 sm:mt-[72px] sm:mb-[72px]">
           <Trophy className="w-12 h-12 sm:w-16 sm:h-16 mb-4" strokeWidth={1.5} color="#f9b83f" />
-          <h1 className="text-2xl sm:text-4xl font-bold text-foreground text-center">{isArabic ? "أفضل اللاعبين" : "Best Players"}</h1>
+          <h1 className="text-2xl sm:text-4xl font-bold text-foreground text-center">{isArabic ? "نقاط البطولات" : "Tournament Points"}</h1>
         </div>
         {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
